@@ -22,7 +22,6 @@ return new class extends Migration
             $table->decimal('sick_leave_used', 5, 1)->default(0);
             $table->decimal('emergency_leave_used', 5, 1)->default(0);
             $table->timestamps();
-            
             $table->unique(['user_id', 'year']);
         });
     }
