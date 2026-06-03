@@ -27,7 +27,11 @@ class StoreLeaveRequest extends FormRequest
     {
         $rules = [
             'leave_type' => ['required', Rule::in(['annual', 'emergency', 'sick', 'maternity', 'unpaid', 'other'])],
-            ['from_date'] => 'required|date|after_or_equal:today',
+              'from_date' => [
+        'required',
+        'date',
+        'after_or_equal:today',
+    ],
             'to_date' => 'required|date|after_or_equal:from_date',
             'total_days' => 'required|integer|min:1|max:365',
             'reason' => 'nullable|string|max:1000',
