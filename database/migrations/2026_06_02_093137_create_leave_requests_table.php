@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('to_date');
             $table->integer('total_days');
             $table->text('reason')->nullable();
-            $table->enum('status', ['pending_manager', 'pending_hr', 'pending_ceo', 'approved', 'rejected'])->default('pending_manager');
+            $table->enum('status', ['pending_manager','cancelled','pending_hr', 'pending_ceo', 'approved', 'rejected'])->default('pending_manager');
             $table->foreignId('substitute_employee')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamp('substitute_date')->nullable();
             $table->string('medical_certificate')->nullable();

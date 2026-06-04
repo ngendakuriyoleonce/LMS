@@ -34,7 +34,7 @@ class LeaveBalancesSeeder extends Seeder
             );
 
             // Create balance for last year (for testing) 
-            if ($user->isEmployee()) {
+            if ($user->hasRole('employee')) {
                 LeaveBalance::firstOrCreate(
                     ['user_id' => $user->id, 'year' => $lastYear],
                     [

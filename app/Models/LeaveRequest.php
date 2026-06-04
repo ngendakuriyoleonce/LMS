@@ -84,5 +84,29 @@ class LeaveRequest extends Model
         
         return "LVE/{$year}{$month}/{$newNumber}";
     }
+      public function getStatusBadgeClass()
+    {
+        return match($this->status) {
+            'pending_manager' => 'bg-yellow-500',
+            'pending_hr' => 'bg-blue-500',
+            'pending_ceo' => 'bg-purple-500',
+            'approved' => 'bg-green-500',
+            'rejected' => 'bg-red-500',
+            'cancelled' => 'bg-gray-500',
+            default => 'bg-gray-500',
+        };
+    }
     
+    public function getStatusText()
+    {
+        return match($this->status) {
+            'pending_manager' => 'Pending Manager Approval',
+            'pending_hr' => 'Pending HR Approval',
+            'pending_ceo' => 'Pending CEO Approval',
+            'approved' => 'Approved',
+            'rejected' => 'Rejected',
+            'cancelled' => 'Cancelled',
+            default => ucfirst($this->status),
+        };
+}
 }
